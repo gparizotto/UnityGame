@@ -30,7 +30,6 @@ public class TrafficLightCollision : MonoBehaviour
         
         if(timeRemaining > 15) // verde - Vermelho -1
         {
-            Debug.Log("verde");
             
             Vermelho = -1;
             timeRemaining -= Time.deltaTime;
@@ -40,7 +39,6 @@ public class TrafficLightCollision : MonoBehaviour
         }
         else if (timeRemaining <= 15 && timeRemaining > 10) // amarelo - Vermelho -1
         {
-            Debug.Log("amareloi");
             timeRemaining -= Time.deltaTime;
             Red.intensity = 0;
             Yellow.intensity = 2;
@@ -48,7 +46,6 @@ public class TrafficLightCollision : MonoBehaviour
         }
         else if(timeRemaining <= 10 && timeRemaining > 0) // vermelho - Vermelho 1
         {
-            //Debug.Log("vermeio");
             Vermelho = 1;
             timeRemaining -= Time.deltaTime;
             Red.intensity = 2;
@@ -68,6 +65,6 @@ public class TrafficLightCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("passou no vermeio222");
+        Debug.Log("passou no vermelho");
     }
 }

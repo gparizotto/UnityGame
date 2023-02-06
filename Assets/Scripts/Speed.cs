@@ -6,8 +6,31 @@ using TMPro;
 
 public class Speed : MonoBehaviour
 {
-    private float speed;
+    public float speed;
+    public float prev;
     public TextMeshProUGUI scoreText;
+
+    // void Start()
+    // {
+    //     StartCoroutine(CalcSpeed());
+    // }
+
+    // IEnumerator CalcSpeed()
+    // {
+    //     bool isPlaying = true;
+
+    //     while(isPlaying)
+    //     {
+    //         Vector3 prevPos = transform.position;
+    //         yield return new WaitForFixedUpdate();
+    //         speed = Mathf.RoundToInt(Vector3.Distance(transform.position, prevPos) / Time.deltaTime);
+    //         Debug.Log(speed);
+    //         if(speed != 0)
+    //             scoreText.text = "speed: " + speed.ToString();
+    //         prev = speed;
+    //         Debug.Log(speed);
+    //     }
+    // }
 
     void Start()
     {
@@ -17,8 +40,14 @@ public class Speed : MonoBehaviour
     void Update()
     {
         StartCoroutine(CalculateSpeed());
-        float aux = 3*speed;
-        scoreText.text = aux.ToString("0");
+        if(speed != 0)
+        {
+            float aux = speed * 3;
+            if(speed > 1)
+                scoreText.text = "speed: " + aux.ToString("0");
+            else    
+                scoreText.text = "speed: 0";
+        }
     }
 
     IEnumerator CalculateSpeed()
