@@ -44,9 +44,9 @@ public class Speed : MonoBehaviour
         {
             float aux = speed * 3;
             if(speed > 1)
-                scoreText.text = "speed: " + aux.ToString("0");
+                scoreText.text = aux.ToString("0");
             else    
-                scoreText.text = "speed: 0";
+                scoreText.text = "0";
         }
     }
 

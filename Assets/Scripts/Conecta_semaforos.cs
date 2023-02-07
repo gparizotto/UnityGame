@@ -7,6 +7,7 @@ using TMPro;
 public class Conecta_semaforos : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI maxSpeedText;
     public int score = 0;
 
     [SerializeField] TrafficLightCollision semaforo1;
@@ -35,6 +36,20 @@ public class Conecta_semaforos : MonoBehaviour
             score -= 200;
         if(semaforo1.passou_amarelo || semaforo2.passou_amarelo || semaforo3.passou_amarelo || semaforo4.passou_amarelo || semaforo5.passou_amarelo || semaforo6.passou_amarelo)
             score -= 50;
+
+        if(semaforo1.passou_verde || semaforo1.passou_amarelo || semaforo1.passou_vermelho)
+            maxSpeedText.text = "50";
+        if(semaforo2.passou_verde || semaforo2.passou_amarelo || semaforo2.passou_vermelho)
+            maxSpeedText.text = "70";
+        if(semaforo3.passou_verde || semaforo3.passou_amarelo || semaforo3.passou_vermelho)
+            maxSpeedText.text = "40";
+        if(semaforo4.passou_verde || semaforo4.passou_amarelo || semaforo4.passou_vermelho)
+            maxSpeedText.text = "100";
+        if(semaforo5.passou_verde || semaforo5.passou_amarelo || semaforo5.passou_vermelho)
+            maxSpeedText.text = "80";
+        if(semaforo6.passou_verde || semaforo6.passou_amarelo || semaforo6.passou_vermelho)
+            maxSpeedText.text = "60";                
+
 
         scoreText.text = "Score: " + score.ToString();  
     }
