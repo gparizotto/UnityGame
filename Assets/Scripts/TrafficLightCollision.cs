@@ -7,6 +7,10 @@ public class TrafficLightCollision : MonoBehaviour
     public float timeRemaining;
     public int Vermelho = 1;
 
+    public bool passou_vermelho = false;
+    public bool passou_verde = false;
+    public bool passou_amarelo = false;
+
     Light Green;
     Light Yellow;
     Light Red;
@@ -27,7 +31,10 @@ public class TrafficLightCollision : MonoBehaviour
 
     void Update()
     {
-        
+        passou_amarelo = false;
+        passou_verde = false;
+        passou_vermelho = false;
+
         if(timeRemaining > 15) // verde - Vermelho -1
         {
             
@@ -57,14 +64,33 @@ public class TrafficLightCollision : MonoBehaviour
             timeRemaining = 30;
         }
 
-        if(Vermelho == 1)
+        //if(Vermelho == 1)
             m_collider.enabled = true;
-        else
-            m_collider.enabled = false;    
+        // else
+        //     m_collider.enabled = false;    
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("passou no vermelho");
+        
+        if(timeRemaining <= 30 && timeRemaining > 15)
+        {
+            Debug.Log("Passouuu");
+            passou_verde = true;
+            passou_vermelho = false;
+            passou_amarelo = false;
+        }
+        if(timeRemaining <= 15 && timeRemaining > 10)
+        {
+            passou_verde = false;
+            passou_vermelho = false;
+            passou_amarelo = true;
+        }
+        if(timeRemaining <= 10 && timeRemaining > 0)
+        {
+            passou_verde = false;
+            passou_vermelho = true;
+            passou_amarelo = false;
+        }
     }
 }
